@@ -161,4 +161,17 @@ class SeatsView : View {
         }
         return true
     }
+
+    private fun booking(position: Int) {
+        for (seat in seats) {
+            seat.isBooked = false
+        }
+        seats[position].apply {
+            seat = this
+            isBooked = true
+        }
+        invalidate()
+    }
+
+
 }
