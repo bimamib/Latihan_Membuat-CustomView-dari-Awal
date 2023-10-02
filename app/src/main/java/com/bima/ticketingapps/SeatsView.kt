@@ -16,14 +16,6 @@ class SeatsView : View {
         defStyleAttr
     )
 
-    data class Seat(
-        val id: Int,
-        var x: Float? = 0F,
-        var y: Float? = 0F,
-        var name: String,
-        var isBooked: Boolean
-    )
-
     private val seats: ArrayList<Seat> = arrayListOf(
         Seat(id = 1, name = "A1", isBooked = false),
         Seat(id = 2, name = "A2", isBooked = false),
@@ -37,26 +29,27 @@ class SeatsView : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        val width: getDefaultSize(suggestedMinimumWidth, widthMeasureSpec)
-        val height: getDefaultSize(suggestedMinimumHeightm, heightMeasureSpec)
+        val width = getDefaultSize(suggestedMinimumWidth, widthMeasureSpec)
+        val height = getDefaultSize(suggestedMinimumHeight, heightMeasureSpec)
 
-        val halOfHeight = height / 2
-        val halOfWidth = width / 2
+        val halfOfHeight = height / 2
+        val halfOfWidth = width / 2
         var value = -600F
 
         for (i in 0..7) {
             if (i.mod(2) == 0) {
                 seats[i].apply {
-                    x = halOfWidth - 300F
-                    y = halOfWidth + value
+                    x = halfOfWidth - 300F
+                    y = halfOfHeight + value
                 }
             } else {
                 seats[i].apply {
-                    x = halOfWidth + 100F
-                    y = halOfHeight + value
+                    x = halfOfWidth + 100F
+                    y = halfOfHeight + value
                 }
                 value += 300F
             }
         }
     }
+
 }
