@@ -22,6 +22,7 @@ class SeatsView : View {
     private val mBounds = Rect()
     private val numberSeatPaint = Paint(Paint.FAKE_BOLD_TEXT_FLAG)
     private val titlePaint = Paint(Paint.FAKE_BOLD_TEXT_FLAG)
+    private val seats: ArrayList<Seat> = arrayListOf()
 
     constructor(context: Context) : super(context)
 
@@ -33,16 +34,18 @@ class SeatsView : View {
         defStyleAttr
     )
 
-    private val seats: ArrayList<Seat> = arrayListOf(
-        Seat(id = 1, name = "A1", isBooked = false),
-        Seat(id = 2, name = "A2", isBooked = false),
-        Seat(id = 3, name = "B1", isBooked = false),
-        Seat(id = 4, name = "A4", isBooked = false),
-        Seat(id = 5, name = "C1", isBooked = false),
-        Seat(id = 6, name = "C2", isBooked = false),
-        Seat(id = 7, name = "D1", isBooked = false),
-        Seat(id = 8, name = "D2", isBooked = false),
-    )
+    init {
+        seats.apply {
+            add(Seat(id = 1, name = "A1", isBooked = false))
+            add(Seat(id = 2, name = "A2", isBooked = false))
+            add(Seat(id = 3, name = "B1", isBooked = false))
+            add(Seat(id = 4, name = "B2", isBooked = false))
+            add(Seat(id = 5, name = "C1", isBooked = false))
+            add(Seat(id = 6, name = "C2", isBooked = false))
+            add(Seat(id = 7, name = "D1", isBooked = false))
+            add(Seat(id = 8, name = "D2", isBooked = false))
+        }
+    }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
